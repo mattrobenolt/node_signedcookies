@@ -1,16 +1,22 @@
 # node_signedcookies
   
-  Read signed cookies in node.js when using [Express](https://github.com/visionmedia/express).
+  Read/set signed cookies in node.js when using [Express](https://github.com/visionmedia/express).
   Requires the use of the express.cookieParser()!  
   
      var app = express.createServer(),
-         signedCookies = require('./lib/signedCookies');
+         signedCookies = require('./lib/signedCookies').init('my_secret');
      
      app.use(express.cookieParser());
-     app.use(signedCookies('my_secret', 'sha1'));
+     app.use(signedCookies.decode()); // use this middleware to read signed cookies
+     app.use(signedCookies.encode()); // use this middleware to add a signedCookie method to the response object. Functions identically to res.cookie().
      
      app.get('/cookies', function(req, res){
        res.send(req.cookies);
+     });
+     
+     app.get('/set_cookie', function(req, res){
+       res.signedCookie('test', 'ok');
+       res.send('ok');
      });
      
      app.listen(3000);
