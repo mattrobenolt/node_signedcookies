@@ -1,0 +1,20 @@
+{
+  "name": "signedcookies",
+  "description": "Extends Express’s cookieParser() to read/write signed cookies.",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattrobenolt/node_signedcookies.git"
+  },
+  "author": "Matt Robenolt",
+  "main": "./lib/signedCookies",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+      "express": ">=2.0.0"
+  },
+  "engines": {
+    "node": ">=0.4.0"
+  }
+}
